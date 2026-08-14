@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography - Old-school Slab/Serif feel */
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+  --font-display: "Georgia", "Times New Roman", serif;
+
+  /* Unique Texas BBQ / Pitmaster Palette */
+  --color-pit-black: #14110f;       /* Cast iron / Smoker interior */
+  --color-pit-bark: #2b1e1a;        /* Deep brisket bark / Post oak */
+  --color-pit-rust: #9e2a2b;        /* Old Texas steel / Chili pepper red */
+  --color-pit-amber: #d97706;       /* Glowing fire ember / Mustard sauce */
+  --color-pit-paper: #e0a96d;       /* Smoked butcher paper / Peach paper */
+  --color-pit-cream: #f5ebe0;       /* Old-fashioned parchment off-white */
+  --color-pit-smoke: #78716c;       /* Hickory ash gray */
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply min-h-screen bg-pit-black text-pit-cream antialiased;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  @apply bg-pit-rust text-pit-cream;
+}
+
+
+.opacity-fade-enter-active,
+.opacity-fade-leave-active {
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  display: block;
+}
+
+.opacity-fade-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.opacity-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
