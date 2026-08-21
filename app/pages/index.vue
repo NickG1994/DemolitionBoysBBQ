@@ -2,6 +2,14 @@
 import Header from '~/components/Header.vue';
 import Footer from '~/components/Footer.vue';
 import Discover from '~/components/Discover.vue';
+import menuItems from '~/assets/data/menuItems';
+
+const menuCategories = menuItems;
+
+const getCategoryHref = (categoryName: string) => {
+  const slug = categoryName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return `/menu?category=${encodeURIComponent(slug)}`;
+};
 </script>
 
 <template>
@@ -157,8 +165,47 @@ import Discover from '~/components/Discover.vue';
 
       <!-- MENU SECTION -->
       <section class="py-16 lg:py-24">
-        <div class="mx-auto max-width-7xl px-16 lg:px-16">
-          
+        <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div class="mb-10 text-center">
+            <p class="mb-3 text-sm font-semibold uppercase tracking-[0.35em] text-pit-amber">
+              Menu Highlights
+            </p>
+            <h2 class="text-3xl font-bold tracking-tight text-pit-paper sm:text-4xl">
+              Pick your pitmaster favorite
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <a
+              v-for="category in menuCategories"
+              :key="category.category"
+              :href="getCategoryHref(category.category)"
+              class="group overflow-hidden rounded-2xl border border-pit-paper/20 bg-pit-bark/40 text-left transition duration-200 hover:-translate-y-1 hover:border-pit-amber hover:bg-pit-bark/60"
+            >
+              <div class="relative h-44 overflow-hidden">
+                <img
+                  :src="category.image"
+                  :alt="`${category.category} menu category`"
+                  class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-pit-black via-pit-black/20 to-transparent"></div>
+              </div>
+
+              <div class="p-5">
+                <div class="mb-4 flex items-center justify-between gap-4">
+                  <span class="text-lg font-semibold uppercase tracking-wide text-pit-paper">
+                    {{ category.category }}
+                  </span>
+                  <span class="rounded-full border border-pit-amber/60 bg-pit-amber/10 px-2 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-pit-amber">
+                    {{ category.items.length }}
+                  </span>
+                </div>
+                <p class="text-sm leading-6 text-pit-cream/75">
+                  {{ category.note || 'Slow-smoked favorites made to order.' }}
+                </p>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
 
