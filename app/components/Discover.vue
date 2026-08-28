@@ -26,7 +26,7 @@ const computeNumOfSlides = computed(() => {
         <!-- Discover Wrapper-->
         <div class="mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <!-- Discover Items -->
-            <div v-for="item in computeNumOfSlides" :key="item.id" class="flex flex-col w-full aspect-[2/3] bg-neutral-900 border border-white/10 rounded-xl overflow-hidden shadow-lg relative">
+            <div v-for="item in computeNumOfSlides" :key="item.id" class="flex flex-col w-full aspect-[2/3] bg-neutral-900 border border-white/10 rounded-xl overflow-hidden shadow-lg relative hover:-translate-y-1 hover:border-pit-amber hover:bg-pit-bark/60">
               <span class="border rounded-xl p-2 border-black absolute left-4 top-4 bg-neutral-900">${{ item.price }}</span>
                 <!-- Discover Image -->
                 <div class="h-3/5 w-full">

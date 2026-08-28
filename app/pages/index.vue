@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import Header from '~/components/Header.vue';
-import Footer from '~/components/Footer.vue';
 import Discover from '~/components/Discover.vue';
 import menuItems from '~/assets/data/menuItems';
 
@@ -10,42 +8,141 @@ const getCategoryHref = (categoryName: string) => {
   const slug = categoryName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   return `/menu?category=${encodeURIComponent(slug)}`;
 };
+
+const heroSliderCards = [
+  {
+    id: 'hero-card-01',
+    badge: 'Texas Smokehouse • Open Daily',
+    title: 'Demolition Boys Smoke House',
+    subtitle: 'Low & Slow Central Texas BBQ',
+    description: 'Slow-smoked brisket, savory ribs, and bold sides served with true Texas hospitality.',
+    media: {
+      type: 'image',
+      src: '/images/hero/brisket-platter.jpg',
+      alt: 'Sliced prime smoked brisket platter with pickles, onions, and sides',
+      fallbackSrc: '/images/hero/brisket-platter-thumb.jpg'
+    },
+    ctaPrimary: {
+      label: 'Order Online',
+      url: '/order',
+      target: '_self'
+    },
+    ctaSecondary: {
+      label: 'View Full Menu',
+      url: '/menu',
+      target: '_self'
+    },
+    theme: {
+      textColor: '#FFFFFF',
+      overlayOpacity: 0.5,
+      alignment: 'left'
+    }
+  },
+  {
+    id: 'hero-card-02',
+    badge: 'Weekend Special',
+    title: 'St. Louis Style Rib Racks',
+    subtitle: 'Smoked 6 Hours Over Oak & Hickory',
+    description: 'Fall-off-the-bone tender ribs glazed with our signature molasses and pit-master spice rub.',
+    media: {
+      type: 'image',
+      src: '/images/hero/rib-rack.jpg',
+      alt: 'Rack of glazed St. Louis style barbecue pork ribs',
+      fallbackSrc: '/images/hero/rib-rack-thumb.jpg'
+    },
+    ctaPrimary: {
+      label: 'Reserve a Rack',
+      url: '/specials',
+      target: '_self'
+    },
+    ctaSecondary: {
+      label: 'Catering Options',
+      url: '/catering',
+      target: '_self'
+    },
+    theme: {
+      textColor: '#FFFFFF',
+      overlayOpacity: 0.4,
+      alignment: 'center'
+    }
+  },
+  {
+    id: 'hero-card-03',
+    badge: 'Family Feeds & Events',
+    title: 'Pitmaster Party Platters',
+    subtitle: 'Feed the Whole Crew',
+    description: 'Choose 3 meats, 4 homemade sides, and Texas toast. Perfect for gamedays, parties, and family gatherings.',
+    media: {
+      type: 'image',
+      src: '/images/hero/family-platter.jpg',
+      alt: 'Large barbecue feast tray with brisket, pulled pork, sausage, mac and cheese, and cornbread',
+      fallbackSrc: '/images/hero/family-platter-thumb.jpg'
+    },
+    ctaPrimary: {
+      label: 'Build Your Platter',
+      url: '/family-packs',
+      target: '_self'
+    },
+    ctaSecondary: {
+      label: 'Location & Hours',
+      url: '/location',
+      target: '_self'
+    },
+    theme: {
+      textColor: '#FFFFFF',
+      overlayOpacity: 0.6,
+      alignment: 'right'
+    }
+  }
+];
+
+
 </script>
 
 <template>
   <div class="min-h-screen bg-pit-black">
     <main class="w-full">
       <!-- HERO SECTION -->
-      <section class="relative isolate flex min-h-[85vh] w-full items-center overflow-hidden bg-cover bg-center py-20 lg:py-28" style="background-image: linear-gradient(180deg, rgba(20,17,15,0.65) 0%, rgba(20,17,15,0.85) 55%, rgba(20,17,15,0.95) 100%), url('/images/bbq-hero.jpg');">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(217,119,6,0.24),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(158,42,43,0.25),_transparent_35%)]"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(90deg,_rgba(224,169,109,0.08)_0%,_transparent_35%,_rgba(224,169,109,0.08)_100%)]"></div>
+      <section class="relative isolate flex flex-nowrap min-h-[80vh] w-full items-center overflow-hidden">
 
-        <!-- Consistent Container -->
-        <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl text-left">
-            <p class="mb-4 text-sm uppercase tracking-[0.4em] text-pit-amber font-semibold">
-              Texas Smokehouse • Open Daily
-            </p>
+        <!-- Step 1 create for loop for cards -->
+        <div v-for="card in heroSliderCards" :key="card.id" class="relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
+          <div class="absolute inset-0 z-50 bg-[radial-gradient(circle_at_top_left,_rgba(217,119,6,0.24),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(158,42,43,0.25),_transparent_35%)]"></div>
+          <div class="absolute inset-0  z-50 bg-[linear-gradient(90deg,_rgba(224,169,109,0.08)_0%,_transparent_35%,_rgba(224,169,109,0.08)_100%)]"></div>
+          <div class="absolute inset-0 z-11 bg-black/30"></div>
+            <!-- 2. Your Transparent Color Filter (Swapped solid bg to transparent rgba layers stacked above image) -->
+          <div class="absolute inset-0 z-10 bg-gradient-to-r from-pit-bark/80 to-pit-amber/40 mix-blend-multiply"></div>
+          <img src="/images/bbq-hero.jpg" class="absolute inset-0 w-full h-full object-cover -z-10" />
+        
+          <!-- Consistent Container -->
+          <div class="p-12 md:py16">
+            <div class="relative mx-auto w-full px-4 sm:px- 6 lg:px-8 z-20">
+            <div class="max-w-3xl text-left">
+              <p class="mb-4 text-sm uppercase tracking-[0.4em] text-pit-amber font-semibold">
+                {{ card.badge }}
+              </p>
 
-            <h1 class="font-display text-4xl font-extrabold uppercase leading-none tracking-tight text-pit-paper sm:text-5xl lg:text-7xl">
-              Demolition Boys<br />
-              <span class="text-pit-amber">Smoke House.</span>
-            </h1>
+              <h1 class="font-display text-4xl font-extrabold uppercase leading-none tracking-tight text-pit-paper sm:text-5xl lg:text-7xl">
+                {{ card.title }}
+              </h1>
 
-            <p class="mt-6 text-lg leading-8 text-pit-cream/90 sm:text-xl">
-              Slow-smoked brisket, savory ribs, and bold sides served with the kind of hospitality that feels like home.
-            </p>
+              <p class="mt-6 text-lg leading-8 text-pit-cream/90 sm:text-xl">
+                {{ card.description }}
+              </p>
 
-            <div class="mt-8 flex flex-wrap gap-4">
-              <a href="/menu" class="rounded-full bg-pit-amber px-6 py-3 font-semibold text-pit-black transition hover:translate-y-[-1px] hover:bg-pit-paper">
-                View Menu
-              </a>
-              <a href="/about" class="rounded-full border border-pit-paper/40 px-6 py-3 font-semibold text-pit-paper transition hover:bg-pit-paper/10">
-                About Us
-              </a>
+              <div class="mt-8 flex flex-wrap gap-4">
+                <a href="/menu" class="rounded-full bg-pit-amber px-6 py-3 font-semibold text-pit-black transition hover:translate-y-[-1px] hover:bg-pit-paper">
+                  View Menu
+                </a>
+                <a href="/about" class="rounded-full border border-pit-paper/40 px-6 py-3 font-semibold text-pit-paper transition hover:bg-pit-paper/10">
+                  About Us
+                </a>
+              </div>
             </div>
-          </div>
+            </div>
+           </div>
         </div>
+
       </section>
 
       <!-- DISCOVER SECTION -->
@@ -53,10 +150,8 @@ const getCategoryHref = (categoryName: string) => {
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col items-center justify-center gap-6 text-center">
             <!-- Discover Icon -->
-            <div class="rounded-full bg-pit-amber p-4">
-              <svg class="h-10 w-10 text-pit-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
+            <div class="rounded-full w-fit bg-pit-amber p-2">
+              <img src="/images/cow-icon.png" class="w-32" />
             </div>
             <h2 class="text-3xl font-bold tracking-tight text-pit-paper sm:text-4xl lg:text-5xl">
               Discover the Flavor of Texas
