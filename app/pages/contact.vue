@@ -30,8 +30,8 @@
           <p class="text-sm font-semibold uppercase tracking-[0.25em] text-pit-amber">Location</p>
           <h2 class="mt-4 text-2xl font-bold text-pit-paper">Texas Smokehouse</h2>
           <p class="mt-3 text-pit-cream/75">
-            123 BBQ Lane<br />
-            Austin, TX 78701
+            4301 N. Doffing<br />
+            Mission, TX 78574
           </p>
         </div>
 
@@ -42,21 +42,21 @@
             </svg>
           </div>
           <p class="text-sm font-semibold uppercase tracking-[0.25em] text-pit-amber">Call</p>
-          <h2 class="mt-4 text-2xl font-bold text-pit-paper">(512) 555-0123</h2>
+          <h2 class="mt-4 text-2xl font-bold text-pit-paper">(956) 685-4117</h2>
           <p class="mt-3 text-pit-cream/75">
             We’re here Monday–Sunday<br />
             11:00 AM – 9:00 PM
           </p>
         </div>
 
-        <div class="rounded-3xl border border-pit-paper/15 bg-pit-bark/40 p-6">
+        <div class="rounded-3xl border border-pit-paper/15 bg-pit-bark/40 p-6 break-words">
           <div class="mb-4 inline-flex rounded-full bg-pit-amber/10 p-3 text-pit-amber">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
           <p class="text-sm font-semibold uppercase tracking-[0.25em] text-pit-amber">Email</p>
-          <h2 class="mt-4 text-2xl font-bold text-pit-paper">hello@demolitionboysbbq.com</h2>
+          <h2 class="mt-4 text-2xl font-bold text-pit-paper text-wrap">hello@demolitionboysbbq.com</h2>
           <p class="mt-3 text-pit-cream/75">
             For catering, events, and general questions.
           </p>

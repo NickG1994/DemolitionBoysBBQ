@@ -33,7 +33,7 @@ const footerLinks = [
           <h3 class="text-sm font-semibold uppercase tracking-[0.25em] text-pit-paper">Contact</h3>
           <ul class="mt-5 space-y-3 text-sm text-pit-cream/75">
             <li>
-              <a href="tel:+15125550123" class="transition hover:text-pit-amber">(512) 555-0123</a>
+              <a href="tel:+19566854117" class="transition hover:text-pit-amber">(956) 685-4117</a>
             </li>
             <li>
               <a href="mailto:hello@demolitionboysbbq.com" class="transition hover:text-pit-amber">hello@demolitionboysbbq.com</a>
@@ -45,14 +45,14 @@ const footerLinks = [
         <div>
           <h3 class="text-sm font-semibold uppercase tracking-[0.25em] text-pit-paper">Location</h3>
           <p class="mt-5 text-sm leading-7 text-pit-cream/75">
-            123 BBQ Lane<br />
-            Austin, TX 78701
+            4301 N. Doffing<br />
+            Mission, TX 78701
           </p>
         </div>
       </div>
 
       <div class="mt-10 border-t border-pit-paper/10 pt-6 text-center text-sm text-pit-cream/60">
-        &copy; 2024 Demolition Boys BBQ. All rights reserved.
+        &copy; {{ new Date().getFullYear() }} Demolition Boys BBQ. All rights reserved.
       </div>
     </div>
   </footer>

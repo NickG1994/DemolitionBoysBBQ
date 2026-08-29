@@ -1,7 +1,7 @@
 const menuItems = [
   {
     "category": "Meat",
-    "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80",
+    "image": "/images/meat-category.jpg",
     "note": "All meats are sold by 1/2 lb, but you can order as much or little as you want",
     "items": [
       {
@@ -11,7 +11,7 @@ const menuItems = [
         "description": "Slow-smoked over Texas hardwood for hours, yielding tender slices with a deep smoke ring and rich flavor.",
         "tags": ["featured", "popular", "meat", "smoked"],
         "price": 0,
-        "image": ""
+        "image": "/images/brisket-item.jpeg"
       },
       {
         "id": 2,
@@ -20,7 +20,7 @@ const menuItems = [
         "description": "Tender pork ribs seasoned with our signature dry rub and smoked until tender with a sweet and savory glazed crust.",
         "tags": ["featured", "popular", "meat", "pork"],
         "price": 0,
-        "image": ""
+        "image": "/images/ribs-item.jpeg"
       },
       {
         "id": 3,
@@ -38,7 +38,7 @@ const menuItems = [
         "description": "Juicy quarter chicken seasoned with aromatic house spices and wood-smoked to crisp perfection.",
         "tags": ["discover", "meat", "poultry"],
         "price": 0,
-        "image": ""
+        "image": "/images/chicken-item.jpeg"
       },
       {
         "id": 5,
@@ -47,7 +47,7 @@ const menuItems = [
         "description": "Artisanal smoked sausage links available in Carnitas, Mozzarella, Jalapeño Cheddar, or Regular styles.",
         "tags": ["discover", "meat", "sausage", "spicy"],
         "price": 0,
-        "image": ""
+        "image": "/images/sausage-item.jpeg"
       }
     ]
   },

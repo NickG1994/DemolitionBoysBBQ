@@ -25,7 +25,6 @@ const heroSliderCards = [
     ctaPrimary: {
       label: 'Order Online',
       url: '/order',
-      target: '_self'
     },
     ctaSecondary: {
       label: 'View Full Menu',
@@ -102,10 +101,10 @@ const heroSliderCards = [
 <template>
   <div class="min-h-screen bg-pit-black">
     <main class="w-full">
-      <!-- HERO SECTION -->
+
       <section class="relative isolate flex flex-nowrap min-h-[80vh] w-full items-center overflow-hidden">
 
-        <!-- Step 1 create for loop for cards -->
+
         <div v-for="card in heroSliderCards" :key="card.id" class="relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
           <div class="absolute inset-0 z-50 bg-[radial-gradient(circle_at_top_left,_rgba(217,119,6,0.24),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(158,42,43,0.25),_transparent_35%)]"></div>
           <div class="absolute inset-0  z-50 bg-[linear-gradient(90deg,_rgba(224,169,109,0.08)_0%,_transparent_35%,_rgba(224,169,109,0.08)_100%)]"></div>
@@ -145,13 +144,13 @@ const heroSliderCards = [
 
       </section>
 
-      <!-- DISCOVER SECTION -->
+
       <section class="py-16 lg:py-24">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col items-center justify-center gap-6 text-center">
-            <!-- Discover Icon -->
+
             <div class="rounded-full w-fit bg-pit-amber p-2">
-              <img src="/images/cow-icon.png" class="w-32" />
+              <img src="/images/cow-icon.png" class="w-16" />
             </div>
             <h2 class="text-3xl font-bold tracking-tight text-pit-paper sm:text-4xl lg:text-5xl">
               Discover the Flavor of Texas
@@ -160,16 +159,16 @@ const heroSliderCards = [
               At Demolition Boys BBQ, we bring the authentic taste of Texas to your plate. Our slow-smoked meats and bold flavors are crafted with care, ensuring every bite is a memorable experience.
             </p>
             <div class="mt-2">
-              <button class="rounded-full bg-pit-amber px-6 py-3 font-semibold text-pit-black transition hover:translate-y-[-1px] hover:bg-pit-paper">
+              <nuxtLink to="/menu" class="rounded-full bg-pit-amber px-6 py-3 font-semibold text-pit-black transition hover:translate-y-[-1px] hover:bg-pit-paper">
                 Explore Our Menu
-              </button>
+              </nuxtLink>
             </div>
             <Discover />
           </div>
         </div>
       </section>
 
-      <!-- ABOUT US SECTION -->
+
       <section class="py-16 lg:py-24 bg-pit-bark/50">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
           <!-- Main Grid/Flex Container -->
@@ -177,7 +176,7 @@ const heroSliderCards = [
             
             <!-- Left Image (Columns 1-4 on Desktop) -->
             <div class="lg:col-span-4 h-80 lg:h-full min-h-[320px] overflow-hidden rounded-2xl">
-              <img src="/images/placeholder.avif" alt="about us featured image" class="h-full w-full object-cover" />
+              <img src="/images/meat-category.jpg" alt="about us featured image" class="h-full w-full object-cover" />
             </div>
 
             <!-- Right Content Area (Columns 5-12 on Desktop) -->
@@ -188,7 +187,7 @@ const heroSliderCards = [
                   Deliciously smoky, perfectly charred. BBQ done right
                 </h2>
                 <p class="text-lg text-pit-cream/80">
-                  Volutpat commodo ex neque faucibus aliquam. Integer himenaeos adipiscing parturient nibh consectetuer litora maximus diam.
+                  We don't believe in cutting corners or rushing the smoke. Every brisket, rack, and shoulder spends hours over pure hardwood, absorbing rich flavor until it achieves the perfect bark and a deep smoke ring.
                 </p>
               </div>
 
@@ -196,22 +195,22 @@ const heroSliderCards = [
               <div class="grid grid-cols-1 gap-8 md:grid-cols-2 items-center">
                 <div class="space-y-6">
                   <div class="space-y-1 border-l-2 border-pit-amber pl-4">
-                    <h3 class="font-bold text-pit-paper">Family Place BBQ</h3>
-                    <p class="text-sm text-pit-cream/70">In at consectetur dolor orci magna nascetur. Gravida felis magnis vel vulputate praesent quis primis.</p>
+                    <h3 class="font-bold text-pit-paper">The Smokehouse Experience</h3>
+                    <p class="text-sm text-pit-cream/70">Pull up a chair at our counter, catch the aroma of active pits, and enjoy meats sliced fresh to order.</p>
                   </div>
                   <div class="space-y-1 border-l-2 border-pit-amber pl-4">
-                    <h3 class="font-bold text-pit-paper">BBQ Delivery Grill</h3>
-                    <p class="text-sm text-pit-cream/70">In at consectetur dolor orci magna nascetur. Gravida felis magnis vel vulputate praesent quis primis.</p>
+                    <h3 class="font-bold text-pit-paper">Family-Style Tables</h3>
+                    <p class="text-sm text-pit-cream/70">Gather around our long wooden tables built for sharing heavy trays of barbecue, ice-cold drinks, and great conversation.</p>
                   </div>
                   <div class="space-y-1 border-l-2 border-pit-amber pl-4">
-                    <h3 class="font-bold text-pit-paper">Private Table Restaurant</h3>
-                    <p class="text-sm text-pit-cream/70">In at consectetur dolor orci magna nascetur. Gravida felis magnis vel vulputate praesent quis primis.</p>
+                    <h3 class="font-bold text-pit-paper">Live Smoke & Fire</h3>
+                    <p class="text-sm text-pit-cream/70">Walk out back to see our wood-fired pits burning 24/7. We cook the old-school way, and you can taste the difference.</p>
                   </div>
                 </div>
 
                 <!-- Secondary Image tied cleanly with h-full + object-cover -->
                 <div class="h-64 overflow-hidden rounded-xl">
-                  <img src="/images/placeholder.avif" alt="BBQ grill side image" class="h-full w-full object-cover" />
+                  <img src="/images/smoke-background-1.jpg" alt="BBQ grill side image" class="h-full w-full object-cover" />
                 </div>
               </div>
 
@@ -221,7 +220,7 @@ const heroSliderCards = [
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             <!-- Card 1: Central Texas Brisket -->
             <div class="px-4 flex gap-2 items-center">
-              <img src="https://placehold.co/32x32" alt="Sliced Smoked Beef Brisket" class="h-16 w-16" />
+              <img src="/images/brisket-item.jpeg" alt="Sliced Smoked Beef Brisket" class="h-16 w-16" />
               <div class="max-w-sm">
                 <h6 class="text-pit-amber font-bold uppercase text-xl">Smoke To Perfection</h6>
                 <p class="text-pit-cream">Smoke flavor BBQ</p>
@@ -230,7 +229,7 @@ const heroSliderCards = [
 
             <!-- Card 2: Pork Ribs -->
             <div class="px-4 flex gap-2 items-center">
-              <img src="https://placehold.co/32x32" alt="Smoked Pork Spare Ribs" class="h-16 w-16" />
+              <img src="/images/ribs-item.jpeg" alt="Smoked Pork Spare Ribs" class="h-16 w-16" />
               <div class="max-w-sm">
                 <h6 class="text-pit-amber font-bold uppercase text-xl">Great Price</h6>
                 <p class="text-pit-cream">From Pork to Ribs. we got great price</p>
@@ -239,7 +238,7 @@ const heroSliderCards = [
 
             <!-- Card 3: Texas Beef Sausage -->
             <div class="px-4 flex gap-2 items-center">
-              <img src="https://placehold.co/32x32" alt="Smoked Jalapeño Cheddar Sausage Links" class="h-16 w-16" />
+              <img src="/images/sausage-item.jpeg" alt="Smoked Jalapeño Cheddar Sausage Links" class="h-16 w-16" />
               <div class="max-w-sm">
                 <h6 class="text-pit-amber font-bold uppercase text-xl">House Made BBQ Sauce</h6>
                 <p class="text-pit-cream">A fine sauce of spice</p>
@@ -248,7 +247,7 @@ const heroSliderCards = [
 
             <!-- Card 4: Traditional Sides -->
             <div class="px-4 flex gap-2 items-center">
-              <img src="https://placehold.co/32x32" alt="Pinto Beans and Potato Salad" class="h-16 w-16" />
+              <img src="/images/menu-item-1.jpg" alt="Pinto Beans and Potato Salad" class="h-16 w-16" />
               <div class="max-w-sm">
                 <h6 class="text-pit-amber font-bold uppercase text-xl">The Pitmaster</h6>
                 <p class="text-pit-cream">expert on BBQ</p>
@@ -258,7 +257,7 @@ const heroSliderCards = [
         </div>
       </section>
 
-      <!-- MENU SECTION -->
+      <!-- Menu -->
       <section class="py-16 lg:py-24">
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div class="mb-10 text-center">
@@ -275,15 +274,15 @@ const heroSliderCards = [
               v-for="category in menuCategories"
               :key="category.category"
               :href="getCategoryHref(category.category)"
-              class="group overflow-hidden rounded-2xl border border-pit-paper/20 bg-pit-bark/40 text-left transition duration-200 hover:-translate-y-1 hover:border-pit-amber hover:bg-pit-bark/60"
+              class="group rounded-2xl border border-pit-paper/20 bg-pit-bark/40 text-left transition duration-200 hover:-translate-y-1 hover:border-pit-amber hover:bg-pit-bark/60"
             >
-              <div class="relative h-44 overflow-hidden">
+              <div class="relative h-44 overflow-hidden ">
                 <img
                   :src="category.image"
                   :alt="`${category.category} menu category`"
-                  class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                  class="relative z-10 h-full w-full object-cover transition duration-300 group-hover:scale-105 "
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-pit-black via-pit-black/20 to-transparent"></div>
+                <div class="absolute z-20 inset-0 bg-gradient-to-t from-pit-black via-pit-black/20 to-transparent "></div>
               </div>
 
               <div class="p-5">
@@ -303,6 +302,25 @@ const heroSliderCards = [
           </div>
         </div>
       </section>
+
+       <section v-if="false" class="px-16 lg:px-24">
+        <div class="max-w-7xl">
+          <div class="text-center">
+            <h3 class="mb-2 uppercase text-3xl text-pit-amber">Our Gallery</h3>
+            <p>Checkout our collection Food, plates, and more for a backyard smokehouse feel.</p>
+          </div>
+          <!-- grid container -->
+          <div class="">
+            <!-- Grid card wrapper -->
+            <div class="grid grid-cols-4 grid-col-4 ">
+              <!-- Cards -->
+              <div class="">
+
+              </div>
+            </div>
+          </div>
+        </div>
+       </section>
 
     </main>
   </div>

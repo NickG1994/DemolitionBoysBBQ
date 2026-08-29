@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useRoute } from 'vue-router'
+const route = useRoute()
 const isMenuOpen = ref(false)
 const isHeaderHidden = ref(false)
 
@@ -32,19 +34,48 @@ const handleScroll = () => {
   lastScrollY = currentY
 }
 
+const intersectionObserver = () => {
+  const observer = new IntersectionObserver((entries) => {
+    console.log('observer mounted')
+    entries.forEach((entry) => {
+      const target = entry.target
+      const animation_type = target.dataset.animation
+
+      if(entry.isIntersecting) {
+        if(animation_type) {
+          target.classList.add(`animation-${animation_type}`)
+          console.log('animation_type: ', animation_type)
+        }
+        else {
+          target.classList.add('animation-default')
+        }
+
+        observer.unobserve(target)
+      }
+
+
+    })
+  })
+  const targetElement = document.querySelectorAll('.animateElement')
+  targetElement.forEach((el) => observer.observe(el))
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
+  intersectionObserver()
 })
 
 onUnmounted(() => {
+  intersectionObserver()
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
 <template>
   <header 
+  data-animation="fade-in"
     :class="[
-      'sticky top-0 inset-x-0 z-50 w-full bg-pit-black/50 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ease-in-out ',
+      'sticky z-50 top-0 inset-x-0 z-50 w-full bg-pit-black/50 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ease-in-out animateElement',
       isHeaderHidden ? '-translate-y-full' : 'translate-y-0'
     ]"
   >
@@ -54,7 +85,7 @@ onUnmounted(() => {
         <NuxtLink to="/" class="inline-block w-32 align-middle text-right mr-4">
           <img class="h-full w-full object-contain" src="/images/logo.png" alt="Demolition Boys BBQ logo">
         </NuxtLink>
-        <h4 class="inline-block align-middle text-left bg-linear-to-b from-pit-rust to-pit-amber bg-clip-text text-transparent uppercase">
+        <h4 class="inline-block align-middle text-left bg-linear-to-b from-pit-rust to-pit-amber bg-clip-text text-transparent uppercase ">
           Demolition Boys BBQ <br/> SmokeHouse
         </h4>
       </div>
@@ -64,7 +95,8 @@ onUnmounted(() => {
           <li v-for="link in navLinks" :key="link.label">
             <NuxtLink 
               :to="link.to" 
-              class="relative inline-block py-1 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-pit-amber after:to-pit-rust after:transition-transform after:duration-300 hover:after:scale-x-100"
+              class="relative font-2xl uppercase inline-block py-1 after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:scale-x-0 after:rounded-full after:bg-gradient-to-r after:from-pit-amber after:to-pit-rust after:transition-transform after:duration-300 hover:after:scale-x-100"
+              :active-class="route.path === link.to ? 'text-white/50' : '' "
             >
               {{ link.label }}
             </NuxtLink>
@@ -113,7 +145,9 @@ onUnmounted(() => {
                 <NuxtLink 
                   :to="link.to" 
                   @click="isMenuOpen = false"
+                  :active-class="route.path === link.to ? 'text-white/50' : '' "
                   class="block py-2 hover:text-pit-amber transition"
+                  :class="route.path !== '/contact'? 'border-b border-pit-amber' : '' "
                 >
                   {{ link.label }}
                 </NuxtLink>
@@ -125,3 +159,16 @@ onUnmounted(() => {
     </div>
   </header>
 </template>
+
+<style>
+
+.animation-fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+.animation-fade-in {
+  opacity: 1;
+}
+
+</style>
