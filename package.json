@@ -10,7 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@indoorequal/vue-maplibre-gl": "^9.0.1",
     "@tailwindcss/vite": "^4.3.3",
+    "FrontEnd": "link:",
+    "maplibre-gl": "^6.6.0",
     "nuxt": "^4.5.2",
     "tailwindcss": "^4.3.3",
     "vue": "^3.5.40",

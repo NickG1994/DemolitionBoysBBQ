@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Discover from '~/components/Discover.vue';
 import menuItems from '~/assets/data/menuItems';
+import Map from '~/components/Map.client.vue';
 
 const menuCategories = menuItems;
 
@@ -321,6 +322,35 @@ const heroSliderCards = [
           </div>
         </div>
        </section>
+
+      <!-- Contact Us -->
+      <section class="py-16 lg:py-24 bg-gradient-to-r from-pit-bark/10 to-transparent">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div class="rounded-2xl bg-pit-bark/30 p-8">
+              <h3 class="text-2xl font-bold text-pit-paper">Contact & Location</h3>
+              <p class="mt-3 text-pit-cream">4301 N. Doffing, Mission, TX 78701</p>
+              <p class="mt-2 text-pit-cream"><a href="tel:+19566854117" class="text-pit-amber font-semibold">(956) 685-4117</a></p>
+              <p class="mt-2 text-pit-cream"><a href="mailto:hello@demolitionboysbbq.com" class="text-pit-amber font-semibold">hello@demolitionboysbbq.com</a></p>
+
+              <div class="mt-6">
+                <h4 class="text-sm font-semibold uppercase tracking-widest text-pit-amber">Hours</h4>
+                <ul class="mt-2 text-pit-cream/90 space-y-1">
+                  <li>Mon–Sun: 11:00 AM – 9:00 PM</li>
+                </ul>
+              </div>
+
+              <div class="mt-6">
+                <a href="/contact" class="inline-block rounded-full bg-pit-amber px-6 py-3 font-semibold text-pit-black">Get Directions</a>
+              </div>
+            </div>
+
+            <div class="rounded-2xl overflow-hidden h-80 lg:h-full">
+              <Map />
+            </div>
+          </div>
+        </div>
+      </section>
 
     </main>
   </div>
