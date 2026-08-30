@@ -270,10 +270,10 @@ const heroSliderCards = [
           </div>
 
           <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <a
+            <NuxtLink 
               v-for="category in menuCategories"
               :key="category.category"
-              :href="getCategoryHref(category.category)"
+              :to="getCategoryHref(category.category)"
               class="group rounded-2xl border border-pit-paper/20 bg-pit-bark/40 text-left transition duration-200 hover:-translate-y-1 hover:border-pit-amber hover:bg-pit-bark/60"
             >
               <div class="relative h-44 overflow-hidden ">
@@ -298,7 +298,7 @@ const heroSliderCards = [
                   {{ category.note || 'Slow-smoked favorites made to order.' }}
                 </p>
               </div>
-            </a>
+            </NuxtLink>
           </div>
         </div>
       </section>

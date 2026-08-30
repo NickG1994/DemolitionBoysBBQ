@@ -57,8 +57,8 @@ const categoryButtonClasses = (categoryName: string) => {
     </div>
 
     <div class="mb-10 flex flex-wrap justify-center gap-3">
-      <a
-        href="/menu"
+      <NuxtLink
+        to="/menu"
         :class="[
           'rounded-full border px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.2em] transition',
           !selectedCategory
@@ -67,16 +67,16 @@ const categoryButtonClasses = (categoryName: string) => {
         ]"
       >
         All Menu
-      </a>
+      </NuxtLink>
 
-      <a
+      <NuxtLink
         v-for="category in menuCategories"
         :key="category.category"
-        :href="getCategoryHref(category.category)"
+        :to="getCategoryHref(category.category)"
         :class="categoryButtonClasses(category.category)"
       >
         {{ category.category }}
-      </a>
+      </NuxtLink>
     </div>
 
     <div class="space-y-8">
@@ -109,7 +109,7 @@ const categoryButtonClasses = (categoryName: string) => {
             {{ category.note || 'House favorites made fresh and served with smoke.' }}
           </p>
         </div>
-
+        <!-- Menu Item Cards -->
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           <NuxtLink
             v-for="item in category.items"
@@ -142,7 +142,9 @@ const categoryButtonClasses = (categoryName: string) => {
             </div>
           </NuxtLink>
         </div>
+        
       </article>
+
     </div>
     </section>
   </div>

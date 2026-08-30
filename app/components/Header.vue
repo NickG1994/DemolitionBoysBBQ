@@ -3,6 +3,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 const isMenuOpen = ref(false)
 const isHeaderHidden = ref(false)
+const headerElement = ref(null)
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -17,18 +18,16 @@ const handleScroll = () => {
   const currentY = window.scrollY;
   if(currentY <= 10 ){
     isHeaderHidden.value = false;
-    console.log('very top')
     return
   }
 
-   // scroll up
+   // scroll Down
   if(currentY >= lastScrollY && currentY >= 80) {
     isHeaderHidden.value = true
-    console.log('scrolling down')
+    isMenuOpen.value = false
   }
   else{
     isHeaderHidden.value = false
-    console.log('scrolling up')
   }
 
   lastScrollY = currentY
@@ -60,9 +59,20 @@ const intersectionObserver = () => {
   targetElement.forEach((el) => observer.observe(el))
 }
 
+const handleOutsideClick = () => {
+  document.addEventListener('click', (event) => {
+  if (headerElement.value && !headerElement.value.contains(event.target)) {
+    isHeaderHidden.value = false
+    isMenuOpen.value = false
+  } 
+  })
+  console.log('headerElement: ', headerElement)
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
   intersectionObserver()
+  handleOutsideClick()
 })
 
 onUnmounted(() => {
@@ -73,6 +83,7 @@ onUnmounted(() => {
 
 <template>
   <header 
+  ref="headerElement"
   data-animation="fade-in"
     :class="[
       'sticky z-50 top-0 inset-x-0 z-50 w-full bg-pit-black/50 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ease-in-out animateElement',
@@ -115,14 +126,16 @@ onUnmounted(() => {
         @click="isMenuOpen = !isMenuOpen"
         type="button" 
         aria-label="Toggle Menu"
-        class="relative flex h-12 w-12 items-center justify-center rounded border border-pit-smoke bg-pit-amber cursor-pointer"        
+        class="relative flex h-12 w-12 items-center justify-center rounded border border-pit-smoke bg-pit-amber cursor-pointer overflow-hidden "        
       >
         <span 
-          class="relative block w-8 h-[5px] rounded-full bg-pit-black 
+          class="relative block w-8 h-[5px] rounded-full bg-pit-black
+                 transition duration-500 ease-in
                  before:content-[''] before:absolute before:block before:top-0 before:left-0 
                  before:w-8 before:h-[5px] before:rounded-full before:bg-pit-black before:-translate-y-2.5
                  after:content-[''] after:absolute after:block after:top-0 after:left-0 
                  after:w-8 after:h-[5px] after:rounded-full after:bg-pit-black after:translate-y-2.5"
+          :class="isMenuOpen ? 'translate-x-[40px] before:translate-x-[-40px] before:rotate-[45deg] before:translate-y-[2px] after:translate-x-[-40px] after:translate-y-[2px] after:rotate-[-45deg]' : ''"
         ></span>
       </button>
 
