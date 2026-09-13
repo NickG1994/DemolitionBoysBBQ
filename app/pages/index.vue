@@ -3,7 +3,10 @@ import Discover from '~/components/Discover.vue';
 import menuItems from '~/assets/data/menuItems';
 import Map from '~/components/Map.client.vue';
 
-const heroIndex = ref(0)
+const prevButton = ref(null)
+const nextButton = ref(null)
+
+const heroIndex = ref(2)
 const timerInterval = ref(null)
 const timerID = ref(false)
 const heroSliderCards = [
@@ -15,7 +18,7 @@ const heroSliderCards = [
     description: 'Slow-smoked brisket, savory ribs, and bold sides served with true Texas hospitality.',
     media: {
       type: 'image',
-      src: '/images/hero/brisket-platter.jpg',
+      src: '/images/bbq-hero.jpg',
       alt: 'Sliced prime smoked brisket platter with pickles, onions, and sides',
       fallbackSrc: '/images/hero/brisket-platter-thumb.jpg'
     },
@@ -42,9 +45,9 @@ const heroSliderCards = [
     description: 'Fall-off-the-bone tender ribs glazed with our signature molasses and pit-master spice rub.',
     media: {
       type: 'image',
-      src: '/images/hero/rib-rack.jpg',
+      src: '/images/hero-bg-slide-2.jpg',
       alt: 'Rack of glazed St. Louis style barbecue pork ribs',
-      fallbackSrc: '/images/hero/rib-rack-thumb.jpg'
+      fallbackSrc: '/images/hero-bg-slide-2.jpg'
     },
     ctaPrimary: {
       label: 'Reserve a Rack',
@@ -69,8 +72,8 @@ const heroSliderCards = [
     subtitle: 'Feed the Whole Crew',
     description: 'Choose 3 meats, 4 homemade sides, and Texas toast. Perfect for gamedays, parties, and family gatherings.',
     media: {
-      type: 'image',
-      src: '/images/hero/family-platter.jpg',
+      type: 'video',
+      src: '/videos/bg-hero-animation-slider.mp4',
       alt: 'Large barbecue feast tray with brisket, pulled pork, sausage, mac and cheese, and cornbread',
       fallbackSrc: '/images/hero/family-platter-thumb.jpg'
     },
@@ -110,7 +113,7 @@ const handleSlider = () => {
       else {
         heroIndex.value = 0
       }
-    },3000)
+    },10000)
   }
 
 }
@@ -134,9 +137,13 @@ onMounted(() => {
 <template>
   <div class="min-h-screen bg-pit-black">
     <main class="w-full">
-
+      <!-- Hero section -->
       <section class="relative isolate flex flex-nowrap min-h-[80vh] w-full items-center overflow-hidden">
-
+          <button ref="prevButton" class="absolute z-30 cursor-pointer left-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4">
+             <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+          </button>
         <div :style="{ transform: `translateX(${-(heroIndex) * 100}%)`}" class="transition-transform duration-400 relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
         <div v-for="card in heroSliderCards" 
              :key="card.id" 
@@ -146,11 +153,14 @@ onMounted(() => {
           <div class="absolute inset-0 z-11 bg-black/30"></div>
             <!-- 2. Your Transparent Color Filter (Swapped solid bg to transparent rgba layers stacked above image) -->
           <div class="absolute inset-0 z-10 bg-gradient-to-r from-pit-bark/80 to-pit-amber/40 mix-blend-multiply"></div>
-          <img src="/images/bbq-hero.jpg" class="absolute inset-0 w-full h-full object-cover -z-10" />
-        
+          <img v-if="card.media.type === 'image'" :src="card.media.src" class="absolute inset-0 w-full h-full object-cover -z-10" />
+          <video class="absolute  w-full object-contain" v-else loop autoplay>
+            <source src="/videos/bg-hero-animation-slider.mp4" type="video/mp4" />
+          </video>
+
           <!-- Consistent Container -->
-          <div class="p-12 md:py16 ">
-            <div class="relative mx-auto w-full px-4 sm:px-6 lg:px-12 z-20">
+          <div class="p-16 md:py-16 ">
+            <div class="relative mx-auto w-full px-4 sm:px-6 lg:px-16 z-20">
             <div class="max-w-3xl">
               <p class="mb-4 text-sm uppercase tracking-[0.4em] text-pit-amber font-semibold">
                 {{ card.badge }}
@@ -177,6 +187,12 @@ onMounted(() => {
            </div>
         </div>
         </div>
+
+        <button ref="nextButton" class="absolute z-30 cursor-pointer right-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4 flex justify-center items-center">
+            <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+        </button>
       </section>
 
 
