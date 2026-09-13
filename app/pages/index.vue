@@ -156,7 +156,7 @@ onMounted(() => {
             <!-- 2. Your Transparent Color Filter (Swapped solid bg to transparent rgba layers stacked above image) -->
           <div class="absolute inset-0 z-10 bg-gradient-to-r from-pit-bark/80 to-pit-amber/40 mix-blend-multiply"></div>
           <img v-if="card.media.type === 'image'" :src="card.media.src" class="absolute inset-0 w-full h-full object-cover -z-10" />
-          <video class="absolute h-full w-full object-cover" v-else loop autoplay>
+          <video class="absolute h-full w-full object-cover" v-else loop autoplay muted playsinline>
             <source src="/videos/bg-hero-animation-slider.mp4" type="video/mp4" />
           </video>
 
