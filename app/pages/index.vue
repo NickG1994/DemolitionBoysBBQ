@@ -139,11 +139,13 @@ onMounted(() => {
     <main class="w-full">
       <!-- Hero section -->
       <section class="relative isolate flex flex-nowrap min-h-[80vh] w-full items-center overflow-hidden">
+        <!--
           <button ref="prevButton" class="absolute z-30 cursor-pointer left-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4">
              <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
           </button>
+        -->
         <div :style="{ transform: `translateX(${-(heroIndex) * 100}%)`}" class="transition-transform duration-400 relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
         <div v-for="card in heroSliderCards" 
              :key="card.id" 
@@ -187,12 +189,13 @@ onMounted(() => {
            </div>
         </div>
         </div>
-
+        <!--
         <button ref="nextButton" class="absolute z-30 cursor-pointer right-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4 flex justify-center items-center">
             <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
         </button>
+        -->
       </section>
 
 
