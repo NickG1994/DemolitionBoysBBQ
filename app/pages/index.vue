@@ -6,7 +6,7 @@ import Map from '~/components/Map.client.vue';
 const prevButton = ref(null)
 const nextButton = ref(null)
 
-const heroIndex = ref(2)
+const heroIndex = ref(0)
 const timerInterval = ref(null)
 const timerID = ref(false)
 const heroSliderCards = [
@@ -127,7 +127,7 @@ const getCategoryHref = (categoryName: string) => {
 };
 
 onMounted(() => {
-  //handleSlider()
+  handleSlider()
 })
 
 
