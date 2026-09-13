@@ -6,12 +6,14 @@ import Map from '~/components/Map.client.vue';
 const prevButton = ref(null)
 const nextButton = ref(null)
 
+const slides = ref([])
+
 const heroIndex = ref(0)
 const timerInterval = ref(null)
 const timerID = ref(false)
 const heroSliderCards = [
   {
-    id: 'hero-card-01',
+    id: 0,
     badge: 'Texas Smokehouse • Open Daily',
     title: 'Demolition Boys Smoke House',
     subtitle: 'Low & Slow Central Texas BBQ',
@@ -38,7 +40,7 @@ const heroSliderCards = [
     }
   },
   {
-    id: 'hero-card-02',
+    id: 1,
     badge: 'Weekend Special',
     title: 'St. Louis Style Rib Racks',
     subtitle: 'Smoked 6 Hours Over Oak & Hickory',
@@ -66,7 +68,7 @@ const heroSliderCards = [
     }
   },
   {
-    id: 'hero-card-03',
+    id: 2,
     badge: 'Family Feeds & Events',
     title: 'Pitmaster Party Platters',
     subtitle: 'Feed the Whole Crew',
@@ -95,28 +97,66 @@ const heroSliderCards = [
   }
 ];
 
-const stopTimer = (timer) => {
-  clearInterval(timer)
-  timerID.value = null
-}
+// Ensure these refs exist at the top of your setup script:
+// const timerID = ref(null);
+
+const stopTimer = () => {
+  if (timerID.value) {
+    clearInterval(timerID.value);
+    timerID.value = null;
+  }
+};
+
+const startTimer = () => {
+  const maxSlides = heroSliderCards.length - 1;
+  
+  timerID.value = setInterval(() => {
+    console.log("Tick... happens every 10 seconds");
+    if (heroIndex.value < maxSlides) {
+      heroIndex.value += 1;
+    } else {
+      heroIndex.value = 0;
+    }
+  }, 10000); // Note: Your log says 3 seconds, but your code is set to 10 seconds!
+};
+
+const resetTimer = () => {
+  console.log('reset timer');
+  stopTimer(); // Clears using the unified timerID.value reference
+  startTimer();
+};
+
+const handlePrev = () => {
+  resetTimer();
+  heroIndex.value -= 1;
+};
+
+const handleNext = () => {
+  resetTimer(); // 🛠️ FIX: Added parentheses so this actually executes
+  heroIndex.value += 1;
+};
+
+watch(heroIndex, (newIndex) => {
+  const maxIndex = heroSliderCards.length - 1;
+  
+  if (newIndex > maxIndex) {
+    heroIndex.value = 0;
+  } else if (newIndex < 0) {
+    heroIndex.value = maxIndex;
+  }
+});
+
+
+
+
 
 const handleSlider = () => {
-  const maxSlides = heroSliderCards.length - 1
-
   if(timerID != null){
-    console.log("Tick... happens every 3 seconds");
-    timerID.value = setInterval(() => {
-      console.log("Tick... happens every 3 seconds");
-      if(heroIndex.value < maxSlides) {
-        heroIndex.value += 1
-      }
-      else {
-        heroIndex.value = 0
-      }
-    },10000)
+    startTimer()
   }
 
 }
+
 
 
 const menuCategories = menuItems;
@@ -131,7 +171,6 @@ onMounted(() => {
 })
 
 
-
 </script>
 
 <template>
@@ -139,17 +178,19 @@ onMounted(() => {
     <main class="w-full">
       <!-- Hero section -->
       <section class="relative isolate flex flex-nowrap min-h-[80vh] w-full items-center overflow-hidden">
-        <!--
-          <button ref="prevButton" class="absolute z-30 cursor-pointer left-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4">
+        
+          <button v-on:click="handlePrev" ref="prevButton" class="absolute z-30 cursor-pointer left-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4">
              <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
           </button>
-        -->
+        
         <div :style="{ transform: `translateX(${-(heroIndex) * 100}%)`}" class="transition-transform duration-400 relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
-        <div v-for="card in heroSliderCards" 
+        <div ref="slides" v-for="card in heroSliderCards" 
              :key="card.id" 
-             class="relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
+             class="relative w-full flex-shrink-0 flex items-center min-h-[80vh]"
+             :class="card.id === heroIndex ? 'active' : ''"
+             >
           <div class="absolute inset-0 z-50 bg-[radial-gradient(circle_at_top_left,_rgba(217,119,6,0.24),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(158,42,43,0.25),_transparent_35%)]"></div>
           <div class="absolute inset-0  z-50 bg-[linear-gradient(90deg,_rgba(224,169,109,0.08)_0%,_transparent_35%,_rgba(224,169,109,0.08)_100%)]"></div>
           <div class="absolute inset-0 z-11 bg-black/30"></div>
@@ -189,13 +230,13 @@ onMounted(() => {
            </div>
         </div>
         </div>
-        <!--
-        <button ref="nextButton" class="absolute z-30 cursor-pointer right-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4 flex justify-center items-center">
+        
+        <button v-on:click="handleNext" ref="nextButton" class="absolute z-30 cursor-pointer right-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4 flex justify-center items-center">
             <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
         </button>
-        -->
+        
       </section>
 
 

@@ -125,18 +125,27 @@ onUnmounted(() => {
       <button 
         @click="isMenuOpen = !isMenuOpen"
         type="button" 
+        :aria-expanded="isMenuOpen"
         aria-label="Toggle Menu"
-        class="relative flex h-12 w-12 items-center justify-center rounded border border-pit-smoke bg-pit-amber cursor-pointer overflow-hidden "        
+        class="relative flex h-18 w-18 items-center justify-center rounded border border-pit-smoke bg-pit-bark cursor-pointer overflow-hidden"
       >
-        <span 
-          class="relative block w-8 h-[5px] rounded-full bg-pit-black
-                 transition duration-500 ease-in
-                 before:content-[''] before:absolute before:block before:top-0 before:left-0 
-                 before:w-8 before:h-[5px] before:rounded-full before:bg-pit-black before:-translate-y-2.5
-                 after:content-[''] after:absolute after:block after:top-0 after:left-0 
-                 after:w-8 after:h-[5px] after:rounded-full after:bg-pit-black after:translate-y-2.5"
-          :class="isMenuOpen ? 'translate-x-[40px] before:translate-x-[-40px] before:rotate-[45deg] before:translate-y-[2px] after:translate-x-[-40px] after:translate-y-[2px] after:rotate-[-45deg]' : ''"
-        ></span>
+        <span class="relative w-16 h-16 pointer-events-none">
+          <!-- Open State (Flames fully lit) -->
+          <img 
+            src="/images/fire-open.svg" 
+            alt="" 
+            class="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-in-out"
+            :class="isMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'" 
+          />
+        
+<!-- Closed State -->
+    <img 
+      src="/images/closed-fire.svg" 
+      alt="" 
+      class="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-in-out"
+      :class="isMenuOpen ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100'" 
+    />
+        </span>
       </button>
 
       <!-- Mobile Dropdown Drawer -->
