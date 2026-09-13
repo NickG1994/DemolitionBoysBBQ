@@ -1,3 +1,5 @@
+const imagePlaceholder = "/images/image-not-available.jpg"
+
 const menuItems = [
   {
     "category": "Meat",
@@ -11,7 +13,7 @@ const menuItems = [
         "description": "Slow-smoked over Texas hardwood for hours, yielding tender slices with a deep smoke ring and rich flavor.",
         "tags": ["featured", "popular", "meat", "smoked"],
         "price": 0,
-        "image": "/images/brisket-item.jpeg"
+        "image": "/images/brisket-item.jpeg" || imagePlaceholder
       },
       {
         "id": 2,
@@ -20,7 +22,7 @@ const menuItems = [
         "description": "Tender pork ribs seasoned with our signature dry rub and smoked until tender with a sweet and savory glazed crust.",
         "tags": ["featured", "popular", "meat", "pork"],
         "price": 0,
-        "image": "/images/ribs-item.jpeg"
+        "image": "/images/ribs-item.jpeg" || imagePlaceholder
       },
       {
         "id": 3,
@@ -29,7 +31,7 @@ const menuItems = [
         "description": "Slow-cooked pork shoulder, hand-pulled for maximum juiciness, tossed with authentic tangy spices, and bursting with rich wood-smoked flavor in every bite.",
         "tags": ["discover", "meat", "pork"],
         "price": 0,
-        "image": ""
+        "image": "" || imagePlaceholder
       },
       {
         "id": 4,
@@ -38,7 +40,7 @@ const menuItems = [
         "description": "Juicy quarter chicken seasoned with aromatic house spices and wood-smoked to crisp perfection.",
         "tags": ["discover", "meat", "poultry"],
         "price": 0,
-        "image": "/images/chicken-item.jpeg"
+        "image": "/images/chicken-item.jpeg" || imagePlaceholder
       },
       {
         "id": 5,
@@ -47,7 +49,7 @@ const menuItems = [
         "description": "Artisanal smoked sausage links available in Carnitas, Mozzarella, Jalapeño Cheddar, or Regular styles.",
         "tags": ["discover", "meat", "sausage", "spicy"],
         "price": 0,
-        "image": "/images/sausage-item.jpeg"
+        "image": "/images/sausage-item.jpeg" || imagePlaceholder
       }
     ]
   },
@@ -63,7 +65,7 @@ const menuItems = [
         "description": "Five warm tortillas loaded with tender sliced brisket, served with fresh cilantro, diced onions, homemade salsa, and charro beans.",
         "tags": ["featured", "popular", "taco", "beef"],
         "price": 0,
-        "image": ""
+        "image": "" || imagePlaceholder
       },
       {
         "id": 7,
@@ -72,7 +74,7 @@ const menuItems = [
         "description": "Five flavorful tacos stuffed with seasoned Mexican loganiza sausage, paired with charro beans and fresh taco toppings.",
         "tags": ["discover", "taco", "pork", "spicy"],
         "price": 0,
-        "image": ""
+        "image": "" || imagePlaceholder
       },
       {
         "id": 8,
@@ -81,7 +83,7 @@ const menuItems = [
         "description": "Five street-style tacos filled with juicy smoked chicken, onions, cilantro, salsa, and a side of charro beans.",
         "tags": ["discover", "taco", "poultry"],
         "price": 0,
-        "image": ""
+        "image": "" || imagePlaceholder
       },
       {
         "id": 9,
@@ -90,7 +92,7 @@ const menuItems = [
         "description": "Five delicious tacos stuffed with tangy pulled pork, accompanied by cilantro, onions, salsa, and savory charro beans.",
         "tags": ["discover", "taco", "pork"],
         "price": 0,
-        "image": ""
+        "image": "" || imagePlaceholder
       },
       {
         "id": 10,
@@ -99,7 +101,7 @@ const menuItems = [
         "description": "Five specialty tacos filled with tender rib meat carved fresh off the bone, served with full charro bean fixings.",
         "tags": ["featured", "specialty", "taco", "pork"],
         "price": 0,
-        "image": ""
+        "image": "" || imagePlaceholder
       }
     ]
   },

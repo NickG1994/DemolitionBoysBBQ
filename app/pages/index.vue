@@ -3,13 +3,9 @@ import Discover from '~/components/Discover.vue';
 import menuItems from '~/assets/data/menuItems';
 import Map from '~/components/Map.client.vue';
 
-const menuCategories = menuItems;
-
-const getCategoryHref = (categoryName: string) => {
-  const slug = categoryName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  return `/menu?category=${encodeURIComponent(slug)}`;
-};
-
+const heroIndex = ref(0)
+const timerInterval = ref(null)
+const timerID = ref(false)
 const heroSliderCards = [
   {
     id: 'hero-card-01',
@@ -96,6 +92,42 @@ const heroSliderCards = [
   }
 ];
 
+const stopTimer = (timer) => {
+  clearInterval(timer)
+  timerID.value = null
+}
+
+const handleSlider = () => {
+  const maxSlides = heroSliderCards.length - 1
+
+  if(timerID != null){
+    console.log("Tick... happens every 3 seconds");
+    timerID.value = setInterval(() => {
+      console.log("Tick... happens every 3 seconds");
+      if(heroIndex.value < maxSlides) {
+        heroIndex.value += 1
+      }
+      else {
+        heroIndex.value = 0
+      }
+    },3000)
+  }
+
+}
+
+
+const menuCategories = menuItems;
+
+const getCategoryHref = (categoryName: string) => {
+  const slug = categoryName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return `/menu?category=${encodeURIComponent(slug)}`;
+};
+
+onMounted(() => {
+  handleSlider()
+})
+
+
 
 </script>
 
@@ -105,8 +137,10 @@ const heroSliderCards = [
 
       <section class="relative isolate flex flex-nowrap min-h-[80vh] w-full items-center overflow-hidden">
 
-
-        <div v-for="card in heroSliderCards" :key="card.id" class="relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
+        <div :style="{ transform: `translateX(${-(heroIndex) * 100}%)`}" class="transition-transform duration-400 relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
+        <div v-for="card in heroSliderCards" 
+             :key="card.id" 
+             class="relative w-full flex-shrink-0 flex items-center min-h-[80vh]">
           <div class="absolute inset-0 z-50 bg-[radial-gradient(circle_at_top_left,_rgba(217,119,6,0.24),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(158,42,43,0.25),_transparent_35%)]"></div>
           <div class="absolute inset-0  z-50 bg-[linear-gradient(90deg,_rgba(224,169,109,0.08)_0%,_transparent_35%,_rgba(224,169,109,0.08)_100%)]"></div>
           <div class="absolute inset-0 z-11 bg-black/30"></div>
@@ -115,9 +149,9 @@ const heroSliderCards = [
           <img src="/images/bbq-hero.jpg" class="absolute inset-0 w-full h-full object-cover -z-10" />
         
           <!-- Consistent Container -->
-          <div class="p-12 md:py16">
-            <div class="relative mx-auto w-full px-4 sm:px- 6 lg:px-8 z-20">
-            <div class="max-w-3xl text-left">
+          <div class="p-12 md:py16 ">
+            <div class="relative mx-auto w-full px-4 sm:px-6 lg:px-12 z-20">
+            <div class="max-w-3xl">
               <p class="mb-4 text-sm uppercase tracking-[0.4em] text-pit-amber font-semibold">
                 {{ card.badge }}
               </p>
@@ -142,7 +176,7 @@ const heroSliderCards = [
             </div>
            </div>
         </div>
-
+        </div>
       </section>
 
 
