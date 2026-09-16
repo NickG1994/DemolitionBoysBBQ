@@ -132,7 +132,7 @@ const handlePrev = () => {
 };
 
 const handleNext = () => {
-  resetTimer(); // 🛠️ FIX: Added parentheses so this actually executes
+  resetTimer(); 
   heroIndex.value += 1;
 };
 
@@ -145,10 +145,6 @@ watch(heroIndex, (newIndex) => {
     heroIndex.value = maxIndex;
   }
 });
-
-
-
-
 
 const handleSlider = () => {
   if(timerID != null){
@@ -179,7 +175,7 @@ onMounted(() => {
       <!-- Hero section -->
       <section class="relative isolate flex flex-nowrap min-h-[80vh] w-full items-center overflow-hidden">
         
-          <button v-on:click="handlePrev" ref="prevButton" class="absolute z-30 cursor-pointer left-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4">
+          <button v-on:click="handlePrev" ref="prevButton" class="absolute lg:left-10 lg:bottom-auto left-10 bottom-10 z-30 cursor-pointer text-7xl border-pit-black rounded-full bg-pit-amber p-4">
              <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
@@ -231,7 +227,7 @@ onMounted(() => {
         </div>
         </div>
         
-        <button v-on:click="handleNext" ref="nextButton" class="absolute z-30 cursor-pointer right-10 text-7xl border-pit-black rounded-full bg-pit-amber p-4 flex justify-center items-center">
+        <button v-on:click="handleNext" ref="nextButton" class="absolute xl:bottom-auto xl:right-10 right-10 bottom-10  z-30 cursor-pointer text-7xl border-pit-black rounded-full bg-pit-amber p-4 flex justify-center items-center">
             <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
