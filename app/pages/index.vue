@@ -25,13 +25,13 @@ const heroSliderCards = [
       fallbackSrc: '/images/hero/brisket-platter-thumb.jpg'
     },
     ctaPrimary: {
-      label: 'Order Online',
-      url: '/order',
-    },
-    ctaSecondary: {
       label: 'View Full Menu',
       url: '/menu',
-      target: '_self'
+    },
+    ctaSecondary: {
+      label: 'Contact Us',
+      url: '/contact',
+      target: '/about'
     },
     theme: {
       textColor: '#FFFFFF',
@@ -80,14 +80,14 @@ const heroSliderCards = [
       fallbackSrc: '/images/hero/family-platter-thumb.jpg'
     },
     ctaPrimary: {
-      label: 'Build Your Platter',
-      url: '/family-packs',
-      target: '_self'
+      label: 'Download Our Menu',
+      url: '/menu',
+      target: 'https://demolitionboyssmokehouse.com/files/demomenu.pdf'
     },
     ctaSecondary: {
       label: 'Location & Hours',
-      url: '/location',
-      target: '_self'
+      url: '/contact#contactInfo',
+      target: '/contact#contactInfo'
     },
     theme: {
       textColor: '#FFFFFF',
@@ -198,9 +198,9 @@ onMounted(() => {
           </video>
 
           <!-- Consistent Container -->
-          <div class="p-16 md:py-16 ">
-            <div class="relative mx-auto w-full px-4 sm:px-6 lg:px-16 z-20">
-            <div class="max-w-3xl">
+          <div class="py-12 sm:py-16 lg:py-24">
+            <div class="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-16 z-100">
+            <div class="max-w-5xl pl-6 sm:pl-12 lg:pl-62">
               <p class="mb-4 text-sm uppercase tracking-[0.4em] text-pit-amber font-semibold">
                 {{ card.badge }}
               </p>
@@ -214,12 +214,12 @@ onMounted(() => {
               </p>
 
               <div class="mt-8 flex flex-wrap gap-4">
-                <a href="/menu" class="rounded-full bg-pit-amber px-6 py-3 font-semibold text-pit-black transition hover:translate-y-[-1px] hover:bg-pit-paper">
-                  View Menu
-                </a>
-                <a href="/about" class="rounded-full border border-pit-paper/40 px-6 py-3 font-semibold text-pit-paper transition hover:bg-pit-paper/10">
-                  About Us
-                </a>
+                <nuxtLink :to="card.ctaPrimary?.target" class="relative z-50 rounded-full bg-pit-amber px-6 py-3 font-semibold text-pit-black transition hover:translate-y-[-1px] hover:bg-pit-paper">
+                  {{ card.ctaPrimary?.label  }}
+                </nuxtLink>
+                <nuxtLink :to="card.ctaSecondary.target" class="rounded-full border border-pit-paper/40 px-6 py-3 font-semibold text-pit-paper transition hover:bg-pit-paper/10">
+                  {{ card.ctaSecondary.label }}
+                </nuxtLink>
               </div>
             </div>
             </div>
@@ -227,12 +227,11 @@ onMounted(() => {
         </div>
         </div>
         
-        <button v-on:click="handleNext" ref="nextButton" class="absolute xl:bottom-auto xl:right-10 right-10 bottom-10  z-30 cursor-pointer text-7xl border-pit-black rounded-full bg-pit-amber p-4 flex justify-center items-center">
+        <button v-on:click="handleNext" ref="nextButton" class="absolute lg:bottom-auto xl:right-10 right-10 bottom-10 z-30 cursor-pointer text-7xl border-pit-black rounded-full bg-pit-amber p-4 flex justify-center items-center">
             <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-10">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
         </button>
-        
       </section>
 
 

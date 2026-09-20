@@ -18,7 +18,7 @@
       </div>
     </section>
 
-    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section id="contactInfo" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
       <div class="grid gap-8 lg:grid-cols-3">
         <div class="rounded-3xl border border-pit-paper/15 bg-pit-bark/40 p-6">
           <div class="mb-4 inline-flex rounded-full bg-pit-amber/10 p-3 text-pit-amber">
@@ -76,7 +76,7 @@
             <div class="space-y-4">
               <a href="tel:+15125550123" class="flex items-center justify-between rounded-2xl border border-pit-paper/15 bg-pit-bark/40 px-4 py-3 text-pit-cream transition hover:border-pit-amber hover:text-pit-paper">
                 <span class="font-medium">Call us</span>
-                <span class="text-pit-amber">(512) 555-0123</span>
+                <span class="text-pit-amber">(956) 685-4117</span>
               </a>
 
               <a href="mailto:hello@demolitionboysbbq.com" class="flex items-center justify-between rounded-2xl border border-pit-paper/15 bg-pit-bark/40 px-4 py-3 text-pit-cream transition hover:border-pit-amber hover:text-pit-paper">
