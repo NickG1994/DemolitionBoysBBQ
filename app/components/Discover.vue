@@ -28,7 +28,7 @@ const computeNumOfSlides = computed(() => {
               <span class="border rounded-xl p-2 border-black absolute left-4 top-4 bg-neutral-900">${{ item.price }}</span>
 
                 <div class="h-2/4 w-full">
-                    <img :src="item.image" :alt="item.title" class="h-full w-full object-cover" />
+                    <img :src="item.image" :alt="item.title" class="h-full w-full object-cover" width="600" height="900" loading="lazy" decoding="async" />
                 </div>
 
                 <div class="p-4 flex-1 flex flex-col justify-between">

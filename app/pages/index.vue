@@ -5,7 +5,7 @@ import Map from '~/components/Map.client.vue';
 
 useSeoMeta({
   title: 'Demolition Boys BBQ | Central Texas Smokehouse & Catering',
-  description: 'Demolition Boys BBQ serves slow-smoked brisket, ribs, sausage, family-style sides, and catering in Mission, Texas. Visit our smokehouse for authentic Central Texas barbecue.',
+  description: 'Slow-smoked brisket, ribs, sausage, and family-style BBQ in Mission, Texas. Authentic Central Texas barbecue and catering for every gathering.',
   keywords: 'Demolition Boys BBQ, Central Texas BBQ, smoked brisket, BBQ ribs, barbecue catering, Mission TX barbecue',
   ogTitle: 'Demolition Boys BBQ | Central Texas Smokehouse & Catering',
   ogDescription: 'Authentic Central Texas barbecue with slow-smoked brisket, ribs, savory sides, and family-style catering in Mission, Texas.',
@@ -270,7 +270,7 @@ onMounted(() => {
           <div class="absolute inset-0 z-11 bg-black/30"></div>
             <!-- 2. Your Transparent Color Filter (Swapped solid bg to transparent rgba layers stacked above image) -->
           <div class="absolute inset-0 z-10 bg-gradient-to-r from-pit-bark/80 to-pit-amber/40 mix-blend-multiply"></div>
-          <img v-if="card.media.type === 'image'" :src="card.media.src" :alt="card.media.alt" class="absolute inset-0 w-full h-full object-cover -z-10" />
+          <img v-if="card.media.type === 'image'" :src="card.media.src" :alt="card.media.alt" class="absolute inset-0 w-full h-full object-cover -z-10" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async" />
           <video class="absolute h-full w-full object-cover" v-else loop autoplay muted playsinline aria-label="Demolition Boys BBQ promotional video">
             <source src="/videos/bg-hero-animation-slider.mp4" type="video/mp4" />
           </video>
@@ -283,9 +283,12 @@ onMounted(() => {
                 {{ card.badge }}
               </p>
 
-              <h1 class="font-display text-4xl font-extrabold uppercase leading-none tracking-tight text-pit-paper sm:text-5xl lg:text-7xl">
+              <h1 v-if="card.id === heroIndex" class="font-display text-4xl font-extrabold uppercase leading-none tracking-tight text-pit-paper sm:text-5xl lg:text-7xl">
                 {{ card.title }}
               </h1>
+              <h2 v-else class="font-display text-4xl font-extrabold uppercase leading-none tracking-tight text-pit-paper sm:text-5xl lg:text-7xl">
+                {{ card.title }}
+              </h2>
 
               <p class="mt-6 text-lg leading-8 text-pit-cream/90 sm:text-xl">
                 {{ card.description }}
@@ -318,7 +321,7 @@ onMounted(() => {
           <div class="flex flex-col items-center justify-center gap-6 text-center">
 
             <div class="rounded-full w-fit bg-pit-amber p-2">
-              <img src="/images/cow-icon.png" alt="Demolition Boys BBQ logo icon" class="w-16" />
+              <img src="/images/cow-icon.png" alt="Demolition Boys BBQ logo icon" class="w-16" width="64" height="64" loading="lazy" decoding="async" />
             </div>
             <h2 class="text-3xl font-bold tracking-tight text-pit-paper sm:text-4xl lg:text-5xl">
               Discover the Flavor of Texas
@@ -339,6 +342,33 @@ onMounted(() => {
         </div>
       </section>
 
+      <section class="py-16 lg:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div class="space-y-6">
+              <p class="text-sm font-semibold uppercase tracking-[0.35em] text-pit-amber">Why We Smoke</p>
+              <h2 class="text-3xl font-bold text-pit-paper sm:text-4xl">Texas barbecue starts with patience, hardwood, and a little pride.</h2>
+              <p class="text-lg leading-8 text-pit-cream/80">
+                Demolition Boys BBQ is built around old-school barbecue traditions that value smoke, time, and texture over shortcuts. We cook low and slow with hardwood fire, letting each brisket, shoulder, and rack develop tender meat, crisp bark, and deep, savory flavor that only a proper pit can produce.
+              </p>
+              <p class="text-base leading-7 text-pit-cream/75">
+                Our menu brings together beloved classics with a Texas point of view: brisket sliced to order, spicy sausage links, tender pork ribs, hearty sides, and flavorful family-style platters for lunch, dinner, and catered gatherings. Whether you are grabbing a quick meal or feeding a crowd, every tray is made to feel like a true neighborhood smokehouse experience.
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-pit-paper/15 bg-pit-bark/40 p-8">
+              <h3 class="text-2xl font-bold text-pit-paper">Built for the Mission community</h3>
+              <ul class="mt-6 space-y-4 text-base leading-7 text-pit-cream/80">
+                <li><span class="font-semibold text-pit-amber">•</span> Authentic Central Texas barbecue with a neighborhood feel.</li>
+                <li><span class="font-semibold text-pit-amber">•</span> Family-style meals, party trays, and catering for events of all sizes.</li>
+                <li><span class="font-semibold text-pit-amber">•</span> Freshly smoked meats, classic sides, and warm Texas hospitality.</li>
+                <li><span class="font-semibold text-pit-amber">•</span> Convenient hours for lunch, dinner, and evening takeout in Mission, Texas.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       <section class="py-16 lg:py-24 bg-pit-bark/50">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
@@ -347,7 +377,7 @@ onMounted(() => {
             
             <!-- Left Image (Columns 1-4 on Desktop) -->
             <div class="lg:col-span-4 h-80 lg:h-full min-h-[320px] overflow-hidden rounded-2xl">
-              <img src="/images/meat-category.jpg" alt="about us featured image" class="h-full w-full object-cover" />
+              <img src="/images/meat-category.jpg" alt="about us featured image" class="h-full w-full object-cover" width="1200" height="800" loading="lazy" decoding="async" />
             </div>
 
             <!-- Right Content Area (Columns 5-12 on Desktop) -->
@@ -381,7 +411,7 @@ onMounted(() => {
 
                 <!-- Secondary Image tied cleanly with h-full + object-cover -->
                 <div class="h-64 overflow-hidden rounded-xl">
-                  <img src="/images/smoke-background-1.jpg" alt="BBQ grill side image" class="h-full w-full object-cover" />
+                  <img src="/images/smoke-background-1.jpg" alt="BBQ grill side image" class="h-full w-full object-cover" width="1200" height="800" loading="lazy" decoding="async" />
                 </div>
               </div>
 
@@ -391,7 +421,7 @@ onMounted(() => {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             <!-- Card 1: Central Texas Brisket -->
             <div class="px-4 flex gap-2 items-center">
-              <img src="/images/brisket-item.jpeg" alt="Sliced Smoked Beef Brisket" class="h-16 w-16" />
+              <img src="/images/brisket-item.jpeg" alt="Sliced Smoked Beef Brisket" class="h-16 w-16" width="64" height="64" loading="lazy" decoding="async" />
               <div class="max-w-sm">
                 <h6 class="text-pit-amber font-bold uppercase text-xl">Smoke To Perfection</h6>
                 <p class="text-pit-cream">Smoke flavor BBQ</p>
@@ -400,7 +430,7 @@ onMounted(() => {
 
             <!-- Card 2: Pork Ribs -->
             <div class="px-4 flex gap-2 items-center">
-              <img src="/images/ribs-item.jpeg" alt="Smoked Pork Spare Ribs" class="h-16 w-16" />
+              <img src="/images/ribs-item.jpeg" alt="Smoked Pork Spare Ribs" class="h-16 w-16" width="64" height="64" loading="lazy" decoding="async" />
               <div class="max-w-sm">
                 <h6 class="text-pit-amber font-bold uppercase text-xl">Great Price</h6>
                 <p class="text-pit-cream">From Pork to Ribs. we got great price</p>
@@ -409,7 +439,7 @@ onMounted(() => {
 
             <!-- Card 3: Texas Beef Sausage -->
             <div class="px-4 flex gap-2 items-center">
-              <img src="/images/sausage-item.jpeg" alt="Smoked Jalapeño Cheddar Sausage Links" class="h-16 w-16" />
+              <img src="/images/sausage-item.jpeg" alt="Smoked Jalapeño Cheddar Sausage Links" class="h-16 w-16" width="64" height="64" loading="lazy" decoding="async" />
               <div class="max-w-sm">
                 <h6 class="text-pit-amber font-bold uppercase text-xl">House Made BBQ Sauce</h6>
                 <p class="text-pit-cream">A fine sauce of spice</p>
@@ -418,7 +448,7 @@ onMounted(() => {
 
             <!-- Card 4: Traditional Sides -->
             <div class="px-4 flex gap-2 items-center">
-              <img src="/images/menu-item-1.jpg" alt="Pinto Beans and Potato Salad" class="h-16 w-16" />
+              <img src="/images/menu-item-1.jpg" alt="Pinto Beans and Potato Salad" class="h-16 w-16" width="64" height="64" loading="lazy" decoding="async" />
               <div class="max-w-sm">
                 <h6 class="text-pit-amber font-bold uppercase text-xl">The Pitmaster</h6>
                 <p class="text-pit-cream">expert on BBQ</p>
@@ -452,6 +482,10 @@ onMounted(() => {
                   :src="category.image"
                   :alt="`${category.category} menu category`"
                   class="relative z-10 h-full w-full object-cover transition duration-300 group-hover:scale-105 "
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div class="absolute z-20 inset-0 bg-gradient-to-t from-pit-black via-pit-black/20 to-transparent "></div>
               </div>

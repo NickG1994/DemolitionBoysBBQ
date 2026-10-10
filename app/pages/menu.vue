@@ -97,6 +97,10 @@ const categoryButtonClasses = (categoryName: string) => {
               :src="category.image"
               :alt="`${category.category} menu image`"
               class="h-20 w-20 rounded-xl object-cover"
+              width="80"
+              height="80"
+              loading="lazy"
+              decoding="async"
             />
             <div>
               <p class="text-sm uppercase tracking-[0.28em] text-pit-amber">Category</p>
@@ -121,6 +125,10 @@ const categoryButtonClasses = (categoryName: string) => {
               :src="item.image"
               :alt="item.title"
               class="h-44 w-full object-cover transition duration-300 group-hover:scale-105"
+              width="800"
+              height="600"
+              loading="lazy"
+              decoding="async"
             />
 
             <div class="p-4">

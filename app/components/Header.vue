@@ -94,7 +94,7 @@ onUnmounted(() => {
     <div class="hidden xl:flex mx-auto max-w-7xl items-center justify-between px-6 py-4">
       <div class="text-right">
         <NuxtLink to="/" class="inline-block w-32 align-middle text-right mr-4">
-          <img class="h-full w-full object-contain" src="/images/logo.png" alt="Demolition Boys BBQ logo">
+          <img class="h-full w-full object-contain" src="/images/logo.png" alt="Demolition Boys BBQ logo" width="128" height="128" loading="eager" decoding="async">
         </NuxtLink>
         <h4 class="inline-block align-middle text-left bg-linear-to-b from-pit-rust to-pit-amber bg-clip-text text-transparent uppercase ">
           Demolition Boys BBQ <br/> SmokeHouse
@@ -119,7 +119,7 @@ onUnmounted(() => {
     <!-- Mobile Header -->
     <div class="relative flex xl:hidden mx-auto max-w-7xl items-center justify-between px-6 py-4">
       <NuxtLink to="/" class="w-28 aspect-square flex items-center">
-        <img class="h-full w-full object-contain" src="/images/logo.png" alt="Demolition Boys BBQ logo">
+        <img class="h-full w-full object-contain" src="/images/logo.png" alt="Demolition Boys BBQ logo" width="112" height="112" loading="eager" decoding="async">
       </NuxtLink>
 
       <button 
