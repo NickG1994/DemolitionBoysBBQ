@@ -3,6 +3,85 @@ import Discover from '~/components/Discover.vue';
 import menuItems from '~/assets/data/menuItems';
 import Map from '~/components/Map.client.vue';
 
+useSeoMeta({
+  title: 'Demolition Boys BBQ | Central Texas Smokehouse & Catering',
+  description: 'Demolition Boys BBQ serves slow-smoked brisket, ribs, sausage, family-style sides, and catering in Mission, Texas. Visit our smokehouse for authentic Central Texas barbecue.',
+  keywords: 'Demolition Boys BBQ, Central Texas BBQ, smoked brisket, BBQ ribs, barbecue catering, Mission TX barbecue',
+  ogTitle: 'Demolition Boys BBQ | Central Texas Smokehouse & Catering',
+  ogDescription: 'Authentic Central Texas barbecue with slow-smoked brisket, ribs, savory sides, and family-style catering in Mission, Texas.',
+  ogType: 'website',
+  ogUrl: 'https://demolitionboyssmokehouse.com/',
+  ogImage: 'https://demolitionboyssmokehouse.com/images/bbq-hero.jpg',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Demolition Boys BBQ',
+  twitterDescription: 'Low & slow Central Texas barbecue, smoked meats, and catering for every gathering.',
+  twitterImage: 'https://demolitionboyssmokehouse.com/images/bbq-hero.jpg',
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: 'https://demolitionboyssmokehouse.com/' }],
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': 'https://demolitionboyssmokehouse.com/#organization',
+          name: 'Demolition Boys BBQ',
+          url: 'https://demolitionboyssmokehouse.com/',
+          logo: 'https://demolitionboyssmokehouse.com/images/logo.png',
+          telephone: '+1-956-685-4117',
+          email: 'hello@demolitionboysbbq.com',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '4301 N Doffing',
+            addressLocality: 'Mission',
+            addressRegion: 'TX',
+            postalCode: '78574',
+            addressCountry: 'US'
+          },
+          sameAs: ['https://demolitionboyssmokehouse.com']
+        },
+        {
+          '@type': 'Restaurant',
+          '@id': 'https://demolitionboyssmokehouse.com/#restaurant',
+          name: 'Demolition Boys BBQ',
+          image: 'https://demolitionboyssmokehouse.com/images/bbq-hero.jpg',
+          url: 'https://demolitionboyssmokehouse.com/',
+          telephone: '+1-956-685-4117',
+          servesCuisine: 'Barbecue',
+          priceRange: '$$',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '4301 N Doffing',
+            addressLocality: 'Mission',
+            addressRegion: 'TX',
+            postalCode: '78574',
+            addressCountry: 'US'
+          },
+          sameAs: ['https://demolitionboyssmokehouse.com'],
+          openingHours: 'Mo-Su 11:00-21:00',
+          isAccessibleForFree: true,
+          areaServed: 'Mission, Texas',
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'BBQ menu',
+            itemListElement: [
+              'Brisket',
+              'Ribs',
+              'Sausage',
+              'Sides',
+              'Catering'
+            ]
+          }
+        }
+      ]
+    })
+  }]
+})
+
 const prevButton = ref(null)
 const nextButton = ref(null)
 
@@ -191,8 +270,8 @@ onMounted(() => {
           <div class="absolute inset-0 z-11 bg-black/30"></div>
             <!-- 2. Your Transparent Color Filter (Swapped solid bg to transparent rgba layers stacked above image) -->
           <div class="absolute inset-0 z-10 bg-gradient-to-r from-pit-bark/80 to-pit-amber/40 mix-blend-multiply"></div>
-          <img v-if="card.media.type === 'image'" :src="card.media.src" class="absolute inset-0 w-full h-full object-cover -z-10" />
-          <video class="absolute h-full w-full object-cover" v-else loop autoplay muted playsinline>
+          <img v-if="card.media.type === 'image'" :src="card.media.src" :alt="card.media.alt" class="absolute inset-0 w-full h-full object-cover -z-10" />
+          <video class="absolute h-full w-full object-cover" v-else loop autoplay muted playsinline aria-label="Demolition Boys BBQ promotional video">
             <source src="/videos/bg-hero-animation-slider.mp4" type="video/mp4" />
           </video>
 
@@ -239,13 +318,16 @@ onMounted(() => {
           <div class="flex flex-col items-center justify-center gap-6 text-center">
 
             <div class="rounded-full w-fit bg-pit-amber p-2">
-              <img src="/images/cow-icon.png" class="w-16" />
+              <img src="/images/cow-icon.png" alt="Demolition Boys BBQ logo icon" class="w-16" />
             </div>
             <h2 class="text-3xl font-bold tracking-tight text-pit-paper sm:text-4xl lg:text-5xl">
               Discover the Flavor of Texas
             </h2>
-            <p class="max-w-2xl text-lg leading-8 text-pit-cream/90">
-              At Demolition Boys BBQ, we bring the authentic taste of Texas to your plate. Our slow-smoked meats and bold flavors are crafted with care, ensuring every bite is a memorable experience.
+            <p class="max-w-3xl text-lg leading-8 text-pit-cream/90">
+              At Demolition Boys BBQ, we bring the authentic taste of Texas to your plate. Our slow-smoked meats and bold flavors are crafted with care, ensuring every bite is a memorable experience. From fall-off-the-bone ribs and tender brisket to savory sausage and house-made sides, we cook classic Central Texas barbecue the old-school way.
+            </p>
+            <p class="max-w-3xl text-base leading-7 text-pit-cream/80">
+              Whether you're stopping in for lunch, grabbing dinner with family, or planning a barbecue spread for your next event, Demolition Boys BBQ delivers quality, smoke, and hospitality with every order.
             </p>
             <div class="mt-2">
               <nuxtLink to="/menu" class="rounded-full bg-pit-amber px-6 py-3 font-semibold text-pit-black transition hover:translate-y-[-1px] hover:bg-pit-paper">
