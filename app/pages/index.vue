@@ -96,7 +96,6 @@ const heroSliderCards = [
     }
   }
 ];
-
 // Ensure these refs exist at the top of your setup script:
 // const timerID = ref(null);
 

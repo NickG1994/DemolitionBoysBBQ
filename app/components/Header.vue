@@ -134,7 +134,7 @@ onUnmounted(() => {
           <img 
             src="/images/fire-open.svg" 
             alt="" 
-            class="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-in-out"
+            class="absolute inset-0 w-full h-full object-contain transition-all duration-300 ease-in-out translate-x-[-1px]"
             :class="isMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'" 
           />
         
